@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Solar System</title>
+        <link rel="stylesheet" href="dist/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Secular+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body> 
+
+        <header id="header">
+
+            <h1>SOLSYSTEMET</h1>
+
+            <h4>SOLARIS</h4>
+
+        </header>
+
+        <main>
+            <section id="planets" class="planets">
+
+                <figure id="mercury" class="mercury"></figure>
+
+                <figure id="venus" class="venus"></figure>
+
+                <figure id="earth" class="earth"></figure>
+
+                <figure id="mars" class="mars"></figure>
+                
+                <figure id="jupiter" class="jupiter"></figure>
+
+                <figure id="saturn" class="saturn">
+                    <figure class="saturn-ring"></figure>
+                </figure>
+                
+                <figure id="uranus" class="uranus"></figure>
+
+                <figure id="neptune" class="neptune"></figure>
+
+            </section>
+            
+            <aside>
+
+                <figure id="starPlanet" class="sun"></figure>
+
+                <figure id="starPlanet-eff2" class="sun2"></figure>
+
+                <figure id="starPlanet-eff3" class="sun3"></figure>
+
+            </aside>
+
+            <section id="popup" class="modal">
+                <section class="modal-content">
+                    <article class="planetary-info">
+                        <span id="close">&times;</span>
+    
+                        <h1 id="planet-name"></h1>
+    
+                        <h4 id="planet-latin-name"></h4>
+    
+                        <p class="p" id="description"></p>
+                    </article>
+    
+                    <hr>
+    
+                    <article class="planetary-data">
+                        <dl class="data-1">
+                            <dt class="h6">OMKRETS</dt>
+                            <dd class="p" id="circumference"></dd>
+                        </dl>
+    
+                        <dl class="data-2">
+                            <dt class="h6">KM FRÅN SOLEN</dt>
+                            <dd class="p" id="distance"></dd>
+                        </dl>
+    
+                        <dl class="data-3">
+                            <dt class="h6">MAX TEMPERATUR</dt>
+                            <dd class="p" id="max-temp"></dd>
+                        </dl>
+    
+                        <dl class="data-4">
+                            <dt class="h6">MIN TEMPERATUR</dt>
+                            <dd class="p" id="min-temp"></dd>
+                        </dl>
+                    </article>
+    
+                    <hr>
+    
+                    <article class="moon-info">
+    
+                        <h6 class="h6">MÅNAR</h6>
+    
+                        <p class="p" id="moons"></p>
+    
+                    </article>
+                </section>
+
+            </section>
+            
+        </main>
+
+        <script type="module" src="dist/JS/main.js"></script>
+    </body>
+</html>
