@@ -1,10 +1,11 @@
+"use strict";
 // **************************************************
 // Modul med variabler för enkel överblick
 // **************************************************
-
-
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.planetColors = void 0;
 // färger till planeterna och solen i vänstra sidan på modalen.
-let planetColors = {
+exports.planetColors = {
     starPlanet: "rgb(255, 208, 41)",
     mercury: "rgb(136, 136, 136)",
     venus: "rgb(231, 205, 205)",
@@ -14,6 +15,4 @@ let planetColors = {
     saturn: "rgb(199, 170, 114)",
     uranus: "rgb(201, 212, 241)",
     neptune: "rgb(122, 145, 167)"
-}
-
-export { planetColors }
+};
