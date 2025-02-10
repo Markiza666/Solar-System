@@ -1,4 +1,4 @@
-import { PlanetData } from '../src/types'; // Skapade en types.ts fil för mina typer
+import { PlanetData } from './interface'; // Skapade en types.ts fil för mina typer
 
 export let systemData: PlanetData[] = [];
 const baseUrl = "https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com";

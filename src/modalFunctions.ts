@@ -1,38 +1,33 @@
-// **************************************************
-// Modul med funktionerna som presenterar informationen i modal-popup
-// Har lagt alla presentationsfunktioner i denna modul för att få enkel överblick
-// **************************************************
-
-//Importerar variabler/pekare som behövs
-import { domObjects, modalElements } from '../src/domElements.js';
-import { planetColors } from '../src/variables.js';
-import { PlanetData } from '../src/types.js'; // Importerar PlanetData
+import { domObjects, modalElements } from './domElements.js';
+import { planetColors } from './variables.js';
+import { PlanetData } from './interface.js'; // Importerar PlanetData
 
 // Öppnar modalen för att visa information om klickad himlakropp med korrekt färg till vänster
-const showModal = (color: string) => {   // Typar color
-
-    // Visar modalen med de extra färgringarna och döljer bakomliggande element
-    domObjects.popup.style.display = 'block';
-    domObjects.header.style.visibility = 'hidden';
-    domObjects.planets.style.visibility = 'hidden';
-    domObjects.starPlanet.style.backgroundColor = color;
-    modalElements.atmosphere.style.display = 'block';
-    modalElements.atmosphere.style.backgroundColor = color;
-    modalElements.atmosphere.style.opacity ='0.35';
-    modalElements.corona.style.display = 'block';
-    modalElements.corona.style.backgroundColor = color;
-    modalElements.corona.style.opacity ='0.25';
-
-    // Lägger lyssnare på stängningsknappen och säger vad som ska hända
-    modalElements.closeBtn.addEventListener('click', () => {
-            domObjects.popup.style.display = 'none';
-            domObjects.header.style.visibility = 'visible';
-            domObjects.planets.style.visibility = 'visible';
-            domObjects.starPlanet.style.backgroundColor = '' + planetColors.starPlanet;
-            modalElements.atmosphere.style.display = 'none';
-            modalElements.corona.style.display = 'none';
-        }
-    );
+const showModal = (color: string): void => {   // Typar color
+    if (domObjects.popup) {domObjects.popup.style.display = 'block';};
+    if (domObjects.header) {domObjects.header.style.visibility = 'hidden';};
+    if (domObjects.planets) {domObjects.planets.style.visibility = 'hidden';};
+    if (domObjects.starPlanet) {domObjects.starPlanet.style.backgroundColor = color;};
+    if (modalElements.atmosphere) {
+        modalElements.atmosphere.style.display = 'block';
+        modalElements.atmosphere.style.backgroundColor = color;
+        modalElements.atmosphere.style.opacity ='0.35';
+    };
+    if (modalElements.corona) {modalElements.corona.style.display = 'block';
+        modalElements.corona.style.backgroundColor = color;
+        modalElements.corona.style.opacity ='0.25';
+    };
+    
+    if (modalElements.closeBtn) {
+        modalElements.closeBtn.addEventListener('click', () => {
+            if (domObjects.popup) {domObjects.popup.style.display = 'none';};
+            if (domObjects.header) {domObjects.header.style.visibility = 'visible';};
+            if (domObjects.planets) {domObjects.planets.style.visibility = 'visible';};
+            if (domObjects.starPlanet) {domObjects.starPlanet.style.backgroundColor = '' + planetColors.starPlanet;};
+            if (modalElements.atmosphere) {modalElements.atmosphere.style.display = 'none';};
+            if (modalElements.corona) {modalElements.corona.style.display = 'none';};
+        });
+    }
 }
 
 // Lägger in informationsdetaljer i modalen

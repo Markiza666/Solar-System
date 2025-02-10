@@ -1,28 +1,32 @@
-export const domObjects = {
-    starPlanet: document.getElementById('starPlanet') as HTMLElement, // Type assertion
-    mercury: document.getElementById('mercury') as HTMLElement,
-    venus: document.getElementById('venus') as HTMLElement,
-    earth: document.getElementById('earth') as HTMLElement,
-    mars: document.getElementById('mars') as HTMLElement,
-    jupiter: document.getElementById('jupiter') as HTMLElement,
-    saturn: document.getElementById('saturn') as HTMLElement,
-    uranus: document.getElementById('uranus') as HTMLElement,
-    neptune: document.getElementById('neptune') as HTMLElement,
-    header: document.getElementById('header') as HTMLElement,
-    planets: document.getElementById('planets') as HTMLElement,
-    popup: document.getElementById('popup') as HTMLElement
+import { domObjects, modalElements, modalElements } from "./interface.js";
+
+const domObjects: domObjects = {
+    starPlanet: document.getElementById('starPlanet'), // Type assertion
+    mercury: document.getElementById('mercury'),
+    venus: document.getElementById('venus'),
+    earth: document.getElementById('earth'),
+    mars: document.getElementById('mars'),
+    jupiter: document.getElementById('jupiter'),
+    saturn: document.getElementById('saturn'),
+    uranus: document.getElementById('uranus'),
+    neptune: document.getElementById('neptune'),
+    header: document.getElementById('header'),
+    planets: document.getElementById('planets'),
+    popup: document.getElementById('popup')
 };
 
-export const modalElements = {
-    atmosphere: document.getElementById('starPlanet-eff2') as HTMLElement,
-    corona: document.getElementById('starPlanet-eff3') as HTMLElement,
-    planetName: document.getElementById('planet-name') as HTMLElement,
-    planetLatinName: document.getElementById('planet-latin-name') as HTMLElement,
-    description: document.getElementById('description') as HTMLElement,
-    circumference: document.getElementById('circumference') as HTMLElement,
-    distance: document.getElementById('distance') as HTMLElement,
-    maxTemp: document.getElementById('max-temp') as HTMLElement,
-    minTemp: document.getElementById('min-temp') as HTMLElement,
-    moons: document.getElementById('moons') as HTMLElement,
-    closeBtn: document.getElementById('close') as HTMLElement
+const modalElements: modalElements = {
+    atmosphere: document.getElementById('starPlanet-eff2'),
+    corona: document.getElementById('starPlanet-eff3'),
+    planetName: document.getElementById('planet-name'),
+    planetLatinName: document.getElementById('planet-latin-name'),
+    description: document.getElementById('description'),
+    circumference: document.getElementById('circumference'),
+    distance: document.getElementById('distance'),
+    maxTemp: document.getElementById('max-temp'),
+    minTemp: document.getElementById('min-temp'),
+    moons: document.getElementById('moons'),
+    closeBtn: document.getElementById('close')
 };
+
+export { domObjects, modalElements };

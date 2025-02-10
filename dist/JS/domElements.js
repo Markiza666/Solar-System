@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.modalElements = exports.domObjects = void 0;
-exports.domObjects = {
+const domObjects = {
     starPlanet: document.getElementById('starPlanet'), // Type assertion
     mercury: document.getElementById('mercury'),
     venus: document.getElementById('venus'),
@@ -15,7 +15,8 @@ exports.domObjects = {
     planets: document.getElementById('planets'),
     popup: document.getElementById('popup')
 };
-exports.modalElements = {
+exports.domObjects = domObjects;
+const modalElements = {
     atmosphere: document.getElementById('starPlanet-eff2'),
     corona: document.getElementById('starPlanet-eff3'),
     planetName: document.getElementById('planet-name'),
@@ -28,3 +29,4 @@ exports.modalElements = {
     moons: document.getElementById('moons'),
     closeBtn: document.getElementById('close')
 };
+exports.modalElements = modalElements;

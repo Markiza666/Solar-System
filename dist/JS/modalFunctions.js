@@ -1,35 +1,66 @@
 "use strict";
-// **************************************************
-// Modul med funktionerna som presenterar informationen i modal-popup
-// Har lagt alla presentationsfunktioner i denna modul för att få enkel överblick
-// **************************************************
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.presentInfo = void 0;
-//Importerar variabler/pekare som behövs
-const domElements_js_1 = require("../src/domElements.js");
-const variables_js_1 = require("../src/variables.js");
+const domElements_js_1 = require("./domElements.js");
+const variables_js_1 = require("./variables.js");
 // Öppnar modalen för att visa information om klickad himlakropp med korrekt färg till vänster
 const showModal = (color) => {
-    // Visar modalen med de extra färgringarna och döljer bakomliggande element
-    domElements_js_1.domObjects.popup.style.display = 'block';
-    domElements_js_1.domObjects.header.style.visibility = 'hidden';
-    domElements_js_1.domObjects.planets.style.visibility = 'hidden';
-    domElements_js_1.domObjects.starPlanet.style.backgroundColor = color;
-    domElements_js_1.modalElements.atmosphere.style.display = 'block';
-    domElements_js_1.modalElements.atmosphere.style.backgroundColor = color;
-    domElements_js_1.modalElements.atmosphere.style.opacity = '0.35';
-    domElements_js_1.modalElements.corona.style.display = 'block';
-    domElements_js_1.modalElements.corona.style.backgroundColor = color;
-    domElements_js_1.modalElements.corona.style.opacity = '0.25';
-    // Lägger lyssnare på stängningsknappen och säger vad som ska hända
-    domElements_js_1.modalElements.closeBtn.addEventListener('click', () => {
-        domElements_js_1.domObjects.popup.style.display = 'none';
-        domElements_js_1.domObjects.header.style.visibility = 'visible';
-        domElements_js_1.domObjects.planets.style.visibility = 'visible';
-        domElements_js_1.domObjects.starPlanet.style.backgroundColor = '' + variables_js_1.planetColors.starPlanet;
-        domElements_js_1.modalElements.atmosphere.style.display = 'none';
-        domElements_js_1.modalElements.corona.style.display = 'none';
-    });
+    if (domElements_js_1.domObjects.popup) {
+        domElements_js_1.domObjects.popup.style.display = 'block';
+    }
+    ;
+    if (domElements_js_1.domObjects.header) {
+        domElements_js_1.domObjects.header.style.visibility = 'hidden';
+    }
+    ;
+    if (domElements_js_1.domObjects.planets) {
+        domElements_js_1.domObjects.planets.style.visibility = 'hidden';
+    }
+    ;
+    if (domElements_js_1.domObjects.starPlanet) {
+        domElements_js_1.domObjects.starPlanet.style.backgroundColor = color;
+    }
+    ;
+    if (domElements_js_1.modalElements.atmosphere) {
+        domElements_js_1.modalElements.atmosphere.style.display = 'block';
+        domElements_js_1.modalElements.atmosphere.style.backgroundColor = color;
+        domElements_js_1.modalElements.atmosphere.style.opacity = '0.35';
+    }
+    ;
+    if (domElements_js_1.modalElements.corona) {
+        domElements_js_1.modalElements.corona.style.display = 'block';
+        domElements_js_1.modalElements.corona.style.backgroundColor = color;
+        domElements_js_1.modalElements.corona.style.opacity = '0.25';
+    }
+    ;
+    if (domElements_js_1.modalElements.closeBtn) {
+        domElements_js_1.modalElements.closeBtn.addEventListener('click', () => {
+            if (domElements_js_1.domObjects.popup) {
+                domElements_js_1.domObjects.popup.style.display = 'none';
+            }
+            ;
+            if (domElements_js_1.domObjects.header) {
+                domElements_js_1.domObjects.header.style.visibility = 'visible';
+            }
+            ;
+            if (domElements_js_1.domObjects.planets) {
+                domElements_js_1.domObjects.planets.style.visibility = 'visible';
+            }
+            ;
+            if (domElements_js_1.domObjects.starPlanet) {
+                domElements_js_1.domObjects.starPlanet.style.backgroundColor = '' + variables_js_1.planetColors.starPlanet;
+            }
+            ;
+            if (domElements_js_1.modalElements.atmosphere) {
+                domElements_js_1.modalElements.atmosphere.style.display = 'none';
+            }
+            ;
+            if (domElements_js_1.modalElements.corona) {
+                domElements_js_1.modalElements.corona.style.display = 'none';
+            }
+            ;
+        });
+    }
 };
 // Lägger in informationsdetaljer i modalen
 const showDetails = (details) => {
