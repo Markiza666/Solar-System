@@ -31,27 +31,30 @@ const showModal = (color: string): void => {   // Typar color
 }
 
 // Lägger in informationsdetaljer i modalen
-const showDetails = (details: PlanetData) => {  // Typar details
-    
-    modalElements.planetName.innerText = details.name;
-    modalElements.planetLatinName.innerText = details.latinName;
-    modalElements.description.innerText = details.desc;
-    modalElements.circumference.innerText = details.circumference + ' km';
-    modalElements.distance.innerText = details.distance + ' km';
-    modalElements.maxTemp.innerHTML = details.temp.day + ' &deg C';             // Måste vara innerHTML för att kunna visa grad-symbol
-    modalElements.minTemp.innerHTML = details.temp.night + ' &#176 C';          // Måste vara innerHTML för att kunna visa grad-symbol
+const showDetails = (details: PlanetData) : void => {  
+    if (modalElements.planetName && modalElements.planetLatinName && modalElements.description && modalElements.circumference && modalElements.distance && modalElements.maxTemp && modalElements.minTemp) {
+        modalElements.planetName.innerText = details.name;
+        modalElements.planetLatinName.innerText = details.latinName;
+        modalElements.description.innerText = details.desc;
+        modalElements.circumference.innerText = details.circumference + ' km';
+        modalElements.distance.innerText = details.distance + ' km';
+        modalElements.maxTemp.innerHTML = details.temp.day + ' &deg C';             // Måste vara innerHTML för att kunna visa grad-symbol
+        modalElements.minTemp.innerHTML = details.temp.night + ' &#176 C';
+    }              // Måste vara innerHTML för att kunna visa grad-symbol
 }
 
 // Lägger in eventuella månar i modalen
-const showMoons =(planetInfo: PlanetData) => {  // Typar planetInfo
-    
-    if(planetInfo.moons.length === 0) {
-        modalElements.moons.innerText = planetInfo.name + ' har inga månar';
+const showMoons = (planetInfo: PlanetData): void => {
+    if (modalElements && modalElements.moons) { // Viktig kontroll!
+        if (planetInfo.moons.length === 0) {
+            modalElements.moons.innerText = `${planetInfo.name} har inga månar`;
+        } else {
+            modalElements.moons.innerText = planetInfo.moons.join(', ');
+        }
+    } else {
+        console.error("modalElements eller modalElements.moons är null!");
     }
-    else{
-        modalElements.moons.innerText = planetInfo.moons.join(', ');
-    }
-}
+};
 
 // Funktionen för att öppna modal/popup och presentera informationen
 let presentInfo = (dataToPresent: PlanetData, colorKey: string) => {    // Typar argumenten

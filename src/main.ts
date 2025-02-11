@@ -1,32 +1,33 @@
 import { getKeyAndSolarSystemData, systemData } from './apiRequests.js';
-import { domObjects } from '../src/domElements.js';
-import { presentInfo } from '../src/modalFunctions.js';
-import { planetColors } from '../src/variables.js';
+import { domObjects } from './domElements.js';
+import { presentInfo } from './modalFunctions.js';
+import { planetColors } from './variables.js';
 
-getKeyAndSolarSystemData();
+const initialize = async () => { // Skapa en async funktion för att hantera hämtningen av data
+    await getKeyAndSolarSystemData(); // Vänta på att datan ska hämtas
+
+    if (systemData.length > 0) { // Kontrollera att data finns
+        initiatePage();
+    } else {
+        console.error("No data received from API."); // Hantera om ingen data tas emot
+    }
+};
 
 const initiatePage = () => {
     let c = 0;
     for (const key in planetColors) {
-        if (Object.prototype.hasOwnProperty.call(planetColors, key)) {
-            const planetElement = domObjects[key];
-            if (planetElement) {  // Kolla om elementet finns
+        if (planetColors.hasOwnProperty(key)) { // Kortare sätt att kolla hasOwnProperty
+            const planetElement = domObjects[key as keyof typeof domObjects];
+            if (planetElement) {
                 planetElement.addEventListener('click', () => {
-                    presentInfo(systemData[c], planetColors[key]); 
+                    presentInfo(systemData[c], planetColors[key]);
                 });
+            } else {
+                console.warn(`Element with key '${key}' not found in domObjects.`); // Varna om element saknas
             }
             c++;
         }
     }
 };
 
-// Vänta tills datan har laddats innan du initierar sidan
-const checkDataAndInitiate = () => {
-    if (systemData.length > 0) {
-        initiatePage();
-    } else {
-        setTimeout(checkDataAndInitiate, 100); // Kolla igen om 100ms
-    }
-};
-
-checkDataAndInitiate();
+initialize(); // Starta initialiseringen

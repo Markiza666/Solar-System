@@ -12,15 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getKeyAndSolarSystemData = exports.systemData = void 0;
 exports.systemData = [];
 const baseUrl = "https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com";
-const getKeyAndSolarSystemData = () => __awaiter(void 0, void 0, void 0, function* () {
-    const keyEndpoint = '/keys';
-    const keyOptions = {
-        method: 'POST'
-    };
+const apiRequest = (endpoint, options) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const res = yield fetch(baseUrl + keyEndpoint, keyOptions);
-        const data = yield res.json();
-        yield getPlanetaryInfo(String(data.key)); // Konvertera till string explicit
+        const res = yield fetch(baseUrl + endpoint, options);
+        return yield res.json();
+    }
+    catch (err) {
+        console.error(err);
+        throw err; // Återkastar felet för att hantera det högre upp
+    }
+});
+const getKeyAndSolarSystemData = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const res = yield fetch(baseUrl + '/key', { method: 'POST' });
+        const { key } = yield res.json();
+        yield getPlanetaryInfo(String(key));
     }
     catch (err) {
         console.error(err);
@@ -28,13 +34,11 @@ const getKeyAndSolarSystemData = () => __awaiter(void 0, void 0, void 0, functio
 });
 exports.getKeyAndSolarSystemData = getKeyAndSolarSystemData;
 const getPlanetaryInfo = (key) => __awaiter(void 0, void 0, void 0, function* () {
-    const infoEndpoint = '/bodies';
-    const infoOptions = {
-        method: 'GET',
-        headers: { 'x-zocom': key }
-    };
     try {
-        const res = yield fetch(baseUrl + infoEndpoint, infoOptions);
+        const res = yield fetch(baseUrl + '/bodies', {
+            method: 'GET',
+            headers: { 'x-zocom': key }
+        });
         const data = yield res.json();
         saveInfoToLocal(data);
     }

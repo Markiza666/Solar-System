@@ -64,21 +64,28 @@ const showModal = (color) => {
 };
 // Lägger in informationsdetaljer i modalen
 const showDetails = (details) => {
-    domElements_js_1.modalElements.planetName.innerText = details.name;
-    domElements_js_1.modalElements.planetLatinName.innerText = details.latinName;
-    domElements_js_1.modalElements.description.innerText = details.desc;
-    domElements_js_1.modalElements.circumference.innerText = details.circumference + ' km';
-    domElements_js_1.modalElements.distance.innerText = details.distance + ' km';
-    domElements_js_1.modalElements.maxTemp.innerHTML = details.temp.day + ' &deg C'; // Måste vara innerHTML för att kunna visa grad-symbol
-    domElements_js_1.modalElements.minTemp.innerHTML = details.temp.night + ' &#176 C'; // Måste vara innerHTML för att kunna visa grad-symbol
+    if (domElements_js_1.modalElements.planetName && domElements_js_1.modalElements.planetLatinName && domElements_js_1.modalElements.description && domElements_js_1.modalElements.circumference && domElements_js_1.modalElements.distance && domElements_js_1.modalElements.maxTemp && domElements_js_1.modalElements.minTemp) {
+        domElements_js_1.modalElements.planetName.innerText = details.name;
+        domElements_js_1.modalElements.planetLatinName.innerText = details.latinName;
+        domElements_js_1.modalElements.description.innerText = details.desc;
+        domElements_js_1.modalElements.circumference.innerText = details.circumference + ' km';
+        domElements_js_1.modalElements.distance.innerText = details.distance + ' km';
+        domElements_js_1.modalElements.maxTemp.innerHTML = details.temp.day + ' &deg C'; // Måste vara innerHTML för att kunna visa grad-symbol
+        domElements_js_1.modalElements.minTemp.innerHTML = details.temp.night + ' &#176 C';
+    } // Måste vara innerHTML för att kunna visa grad-symbol
 };
 // Lägger in eventuella månar i modalen
 const showMoons = (planetInfo) => {
-    if (planetInfo.moons.length === 0) {
-        domElements_js_1.modalElements.moons.innerText = planetInfo.name + ' har inga månar';
+    if (domElements_js_1.modalElements && domElements_js_1.modalElements.moons) { // Viktig kontroll!
+        if (planetInfo.moons.length === 0) {
+            domElements_js_1.modalElements.moons.innerText = `${planetInfo.name} har inga månar`;
+        }
+        else {
+            domElements_js_1.modalElements.moons.innerText = planetInfo.moons.join(', ');
+        }
     }
     else {
-        domElements_js_1.modalElements.moons.innerText = planetInfo.moons.join(', ');
+        console.error("modalElements eller modalElements.moons är null!");
     }
 };
 // Funktionen för att öppna modal/popup och presentera informationen

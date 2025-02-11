@@ -1,4 +1,4 @@
-import { domObjects, modalElements, modalElements } from "./interface.js";
+import { domObjects, modalElements } from "./interface";
 
 const domObjects: domObjects = {
     starPlanet: document.getElementById('starPlanet'), // Type assertion
